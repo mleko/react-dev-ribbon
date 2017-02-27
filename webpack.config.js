@@ -26,9 +26,11 @@ let config = {
     },
     entry: [
         // Set index.tsx as application entry point.
-        './index.tsx'
+        './example/index.tsx'
     ],
-    devServer: {},
+    devServer: {
+        contentBase: "./example/"
+    },
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {

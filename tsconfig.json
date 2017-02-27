@@ -16,6 +16,6 @@
         "!./node_modules/**/*"
     ],
     "files": [
-        "./index.tsx"
+        "./index.ts"
     ]
 }
