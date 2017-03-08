@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Ribbon} from "../../";
+import {Ribbon} from "../../../";
 
 export class RibbonExample extends React.PureComponent<void, State> {
 

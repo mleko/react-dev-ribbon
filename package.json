@@ -2,7 +2,7 @@
   "name": "react-dev-ribbon",
   "version": "0.0.1",
   "scripts": {
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --config examples/webpack.config.js --open"
   },
   "license": "MIT",
   "peerDependencies": {

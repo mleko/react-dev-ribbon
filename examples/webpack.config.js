@@ -1,4 +1,5 @@
 let webpack = require('webpack');
+let path = require('path');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -24,12 +25,16 @@ let config = {
             }
         ]
     },
-    entry: [
-        // Set index.tsx as application entry point.
-        './example/index.tsx'
-    ],
+    context: path.resolve(__dirname),
+    entry: {
+        bundle: "./src/index.tsx"
+    },
+    output: {
+        filename: "./bundle.js",
+        path: path.resolve(__dirname, "dist")
+    },
     devServer: {
-        contentBase: "./example/"
+        contentBase: path.resolve(__dirname, "public_html")
     },
     plugins: [
         new webpack.DefinePlugin({
