@@ -1,6 +1,6 @@
 {
   "name": "react-dev-ribbon",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "start": "webpack-dev-server --config examples/webpack.config.js --open"
   },
@@ -21,5 +21,8 @@
     "typescript": "^2.0.0",
     "webpack": "^2.2.0",
     "webpack-dev-server": "^2.2.0"
+  },
+  "dependencies": {
+    "typescript-object-utils": "^0.2.3"
   }
 }
