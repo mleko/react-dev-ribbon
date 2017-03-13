@@ -1,5 +1,8 @@
 # ReactDevRibbon
 
+## Demo
+Demo is available here: http://krol.me/react-dev-ribbon/
+
 ## Development
 
  - *Have node.js installed.*
