@@ -1,5 +1,5 @@
 import * as React from "react";
-import {animate} from "react-easing";
+import {animate} from "react-animate-hoc";
 import {mergeDeep} from "typescript-object-utils";
 import {Ribbon, RibbonProps} from "../Ribbon";
 
@@ -43,7 +43,7 @@ interface State {
 	opacity: number;
 }
 
-const animatedRibbon = animate({duration: 500})((props: AnimatedRibbonProps): JSX.Element => {
+const animatedRibbon = animate({duration: 500, properties: ["opacity"]})((props: AnimatedRibbonProps): JSX.Element => {
 	if (!props.opacity) return null;
 	return React.createElement(Ribbon, mergeDeep(props, {style: {cursor: "pointer", opacity: props.opacity}}));
 });
