@@ -1,6 +1,6 @@
 {
   "name": "react-dev-ribbon",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "start": "webpack-dev-server --config examples/webpack.config.js --open"
   },

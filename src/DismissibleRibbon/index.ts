@@ -3,7 +3,11 @@ import {animate} from "react-animate-hoc";
 import {mergeDeep} from "typescript-object-utils";
 import {Ribbon, RibbonProps} from "../Ribbon";
 
-export class DismissibleRibbon extends React.Component<RibbonProps, State> {
+export class DismissibleRibbon extends React.Component<DismissibleRibbonProps, State> {
+
+	public static readonly defaultProps = {
+		hideOnMouseOver: true
+	};
 
 	private timeoutHandle;
 
@@ -17,15 +21,26 @@ export class DismissibleRibbon extends React.Component<RibbonProps, State> {
 	public render(): JSX.Element {
 		const props = mergeDeep(this.props, {
 			opacity: this.state.opacity,
-			onClick: this.click
+			containerProps: {
+				onClick: this.click,
+				onMouseOver: this.mouseOver
+			}
 		});
 
 		return React.createElement(animatedRibbon, props);
 	}
 
-	private click = () => {
-		if (this.props.onClick) this.props.onClick();
+	private click = (event) => {
+		if (this.props.containerProps && this.props.containerProps.onClick) {
+			this.props.containerProps.onClick(event);
+		}
 		this.hide();
+	};
+	private mouseOver = (event) => {
+		if (this.props.containerProps && this.props.containerProps.onMouseOver) {
+			this.props.containerProps.onMouseOver(event);
+		}
+		if (this.props.hideOnMouseOver) this.hide();
 	};
 	private hide = () => {
 		this.setState({opacity: 0});
@@ -39,13 +54,21 @@ export class DismissibleRibbon extends React.Component<RibbonProps, State> {
 	};
 }
 
+export type DismissibleRibbonProps = RibbonProps & {
+	hideOnMouseOver?: boolean;
+};
+
 interface State {
 	opacity: number;
 }
 
-const animatedRibbon = animate({duration: 500, properties: ["opacity"]})((props: AnimatedRibbonProps): JSX.Element => {
+const animatedRibbon = animate({duration: 300, properties: ["opacity"]})((props: AnimatedRibbonProps): JSX.Element => {
 	if (!props.opacity) return null;
-	return React.createElement(Ribbon, mergeDeep(props, {style: {cursor: "pointer", opacity: props.opacity}}));
+	let style = {cursor: "pointer", opacity: props.opacity};
+	if (props.opacity < 1) {
+		style["pointer-events"] = "none";
+	}
+	return React.createElement(Ribbon, mergeDeep(props, {style}));
 });
 
 interface AnimatedRibbonProps {

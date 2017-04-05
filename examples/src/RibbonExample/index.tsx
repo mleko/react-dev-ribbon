@@ -20,7 +20,7 @@ export class RibbonExample extends React.PureComponent<void, State> {
 				<label>Ribbon width:
 					<input type="number" value={this.state.width} onChange={this.changeWidth}/>
 				</label>
-				<Ribbon width={+this.state.width} angle={45}>{this.state.text}</Ribbon>
+				<Ribbon width={+this.state.width}>{this.state.text}</Ribbon>
 			</div>
 		);
 	}

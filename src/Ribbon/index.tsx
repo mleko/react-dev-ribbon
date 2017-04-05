@@ -27,7 +27,7 @@ export class Ribbon extends React.PureComponent<RibbonProps, void> {
 			border: "1px white dashed"
 		};
 		return (
-			<div style={ribbonStyle} ref={this.mountContainer} onClick={this.click}>
+			<div {...this.props.containerProps} style={ribbonStyle} ref={this.mountContainer}>
 				<div style={ribbonTextStyle}>{this.props.children || "DEVELOPMENT"}</div>
 			</div>
 		);
@@ -36,10 +36,6 @@ export class Ribbon extends React.PureComponent<RibbonProps, void> {
 	private mountContainer = (e: HTMLDivElement) => {
 		this.container = ReactDOM.findDOMNode<HTMLDivElement>(e);
 		this.forceUpdate();
-	};
-
-	private click = () => {
-		if (this.props.onClick) this.props.onClick();
 	};
 }
 
@@ -60,6 +56,5 @@ export interface RibbonProps {
 	width?: number;
 	angle?: number;
 	style?: React.CSSProperties;
-
-	onClick?: () => void;
+	containerProps?: React.HTMLProps<HTMLDivElement>;
 }
