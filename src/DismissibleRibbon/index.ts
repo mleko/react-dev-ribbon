@@ -66,7 +66,7 @@ const animatedRibbon = animate({duration: 300, properties: ["opacity"]})((props:
 	if (!props.opacity) return null;
 	let style = {cursor: "pointer", opacity: props.opacity};
 	if (props.opacity < 1) {
-		style["pointer-events"] = "none";
+		style["pointerEvents"] = "none";
 	}
 	return React.createElement(Ribbon, mergeDeep(props, {style}));
 });
