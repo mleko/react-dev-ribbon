@@ -6,7 +6,7 @@
     "compile": "tsc -d",
     "compile:examples": "webpack --config examples/webpack.config.js",
     "prepublishOnly": "npm run compile",
-    "lint": "tslint \"src/**\" \"examples/src/**\""
+    "lint": "tslint 'src/**' 'examples/src/**'"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

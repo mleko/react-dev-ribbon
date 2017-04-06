@@ -4,11 +4,15 @@ before_script:
   - npm -q install
 
 compile:
-  stage: test
+  stage: build
   script:
-    - npm run -q lint
     - npm run -q compile
     - npm run -q compile:examples
+
+check:
+  state: test
+  script:
+    - npm run -q lint
 
 pages:
   stage: deploy

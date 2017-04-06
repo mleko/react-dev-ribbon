@@ -1,7 +1,7 @@
 # ReactDevRibbon
 
 ## Demo
-Demo is available here: http://krol.me/react-dev-ribbon/
+Demo is available here: http://mleko.gitlab.io/react-dev-ribbon/
 
 ## Development
 
