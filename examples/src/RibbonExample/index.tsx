@@ -40,7 +40,7 @@ export class RibbonExample extends React.PureComponent<void, State> {
 	}
 
 	public renderExamples() {
-		const cStyle = {
+		const cStyle: React.CSSProperties = {
 			height: 200,
 			width: 200,
 			background: "#f5f5f5",
@@ -50,9 +50,11 @@ export class RibbonExample extends React.PureComponent<void, State> {
 		};
 		return examples.map((example, i) => {
 			let props = mergeDeep(example, {style: {position: "relative"}});
-			return (<div style={cStyle} key={"example-" + i}>
-				{React.createElement(Ribbon, props)}
-			</div>);
+			return (
+				<div style={cStyle} key={"example-" + i}>
+					{React.createElement(Ribbon, props)}
+				</div>
+			);
 		});
 	}
 

@@ -2,7 +2,8 @@
   "name": "react-dev-ribbon",
   "version": "0.0.5",
   "scripts": {
-    "start": "webpack-dev-server --config examples/webpack.config.js --open"
+    "start": "webpack-dev-server --config examples/webpack.config.js --open",
+    "compile:examples": "webpack --config examples/webpack.config.js"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
