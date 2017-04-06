@@ -10,7 +10,7 @@ compile:
     - npm run -q compile:examples
 
 check:
-  state: test
+  stage: test
   script:
     - npm run -q lint
 
