@@ -1,9 +1,11 @@
 {
   "name": "react-dev-ribbon",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "scripts": {
     "start": "webpack-dev-server --config examples/webpack.config.js --open"
   },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "devDependencies": {
     "react-hot-loader": "^1.3.1",

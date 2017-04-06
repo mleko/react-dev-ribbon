@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "outDir": "dist",
         "target": "es5",
         "module": "commonjs",
         "jsx": "react",
@@ -11,8 +12,9 @@
         "suppressImplicitAnyIndexErrors": true
     },
     "filesGlob": [
-        "./**/*.ts",
-        "./**/*.tsx",
         "!./node_modules/**/*"
+    ],
+    "files": [
+        "index.ts"
     ]
 }

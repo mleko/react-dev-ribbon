@@ -3,7 +3,7 @@ import {animate} from "react-animate-hoc";
 import {mergeDeep} from "typescript-object-utils";
 import {Ribbon, RibbonProps} from "../Ribbon";
 
-export class DismissibleRibbon extends React.Component<DismissibleRibbonProps, State> {
+export class DismissibleRibbon extends React.Component<DismissibleRibbonProps, DismissibleRibbonState> {
 
 	public static readonly defaultProps = {
 		hideOnMouseOver: true
@@ -58,7 +58,7 @@ export type DismissibleRibbonProps = RibbonProps & {
 	hideOnMouseOver?: boolean;
 };
 
-interface State {
+export interface DismissibleRibbonState {
 	opacity: number;
 }
 
