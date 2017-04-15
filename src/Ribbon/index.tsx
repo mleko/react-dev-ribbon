@@ -3,11 +3,17 @@ import * as ReactDOM from "react-dom";
 import {merge} from "typescript-object-utils";
 
 export class Ribbon extends React.PureComponent<RibbonProps, void> {
+	public static defaultProps = {
+		width: 190,
+		angle: 45
+	};
+
 	private container: HTMLDivElement;
 
 	public render(): JSX.Element {
-		const width = this.props.width || 190;
-		const angle = this.props.angle || 45;
+		const width = this.props.width;
+		const angle = this.props.angle;
+
 		const sin = Math.sin(Math.PI / 180 * angle);
 		const cos = Math.cos(Math.PI / 180 * angle);
 

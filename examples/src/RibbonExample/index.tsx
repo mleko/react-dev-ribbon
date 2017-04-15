@@ -1,6 +1,6 @@
 import * as React from "react";
 import {mergeDeep} from "typescript-object-utils";
-import {DismissibleRibbon, Ribbon} from "../../../";
+import {Ribbon} from "../../../";
 
 const examples = [
 	{},
@@ -17,7 +17,8 @@ export class RibbonExample extends React.PureComponent<void, State> {
 		super(props);
 		this.state = {
 			text: "DEVELOPMENT",
-			width: ""
+			width: "190",
+			angle: "45"
 		};
 	}
 
@@ -31,7 +32,10 @@ export class RibbonExample extends React.PureComponent<void, State> {
 					<label>Ribbon width:
 						<input type="number" value={this.state.width} onChange={this.changeWidth}/>
 					</label>
-					<DismissibleRibbon width={+this.state.width}>{this.state.text}</DismissibleRibbon>
+					<label>Ribbon angle:
+						<input type="number" value={this.state.angle} onChange={this.changeAngle}/>
+					</label>
+					<Ribbon width={+this.state.width} angle={+this.state.angle}>{this.state.text}</Ribbon>
 				</div>
 				<div>{this.renderExamples()}</div>
 			</div>
@@ -64,9 +68,13 @@ export class RibbonExample extends React.PureComponent<void, State> {
 	private changeWidth = (event: React.FormEvent<HTMLInputElement>) => {
 		this.setState({width: event.currentTarget.value});
 	};
+	private changeAngle = (event: React.FormEvent<HTMLInputElement>) => {
+		this.setState({angle: event.currentTarget.value});
+	};
 }
 
 interface State {
 	text?: string;
 	width?: string;
+	angle?: string;
 }
