@@ -7,7 +7,8 @@ export class Playground extends React.Component<void, State> {
 		this.state = {
 			text: "DEVELOPMENT",
 			width: "190",
-			angle: "45"
+			angle: "45",
+			overflowHidden: true
 		};
 	}
 
@@ -29,6 +30,11 @@ export class Playground extends React.Component<void, State> {
 						<input type="number" value={this.state.angle} onChange={this.changeAngle}/>
 					</label>
 				</div>
+				<div>
+					<label>Overflow hidden:
+						<input type="checkbox" checked={this.state.overflowHidden} onChange={this.changeOverflowHidden}/>
+					</label>
+				</div>
 				{this.renderRibbon()}
 			</div>
 		);
@@ -39,8 +45,8 @@ export class Playground extends React.Component<void, State> {
 			height: 300,
 			width: 300,
 			background: "#f5f5f5",
-			margin: 15,
-			overflow: "hidden",
+			marginTop: 50,
+			overflow: this.state.overflowHidden ? "hidden" : null,
 			display: "inline-block",
 			transform: "translate(0)"
 		};
@@ -64,10 +70,14 @@ export class Playground extends React.Component<void, State> {
 	private changeAngle = (event: React.FormEvent<HTMLInputElement>) => {
 		this.setState({angle: event.currentTarget.value});
 	};
+	private changeOverflowHidden = (event: React.FormEvent<HTMLInputElement>) => {
+		this.setState({overflowHidden: event.currentTarget.checked});
+	};
 }
 
 interface State {
 	text?: string;
 	width?: string;
 	angle?: string;
+	overflowHidden?: boolean;
 }
