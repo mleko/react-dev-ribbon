@@ -1,18 +1,7 @@
 import * as React from "react";
-import {mergeDeep} from "typescript-object-utils";
 import {Ribbon} from "../../../";
 
-const examples = [
-	{},
-	{style: {background: "green"}},
-	{style: {background: "blue"}},
-	{style: {background: "black"}},
-	{style: {color: "black", background: "#ccc"}},
-	{children: "STAGE"},
-];
-
-export class RibbonExample extends React.PureComponent<void, State> {
-
+export class Playground extends React.Component<void, State> {
 	public constructor(props) {
 		super(props);
 		this.state = {
@@ -24,42 +13,46 @@ export class RibbonExample extends React.PureComponent<void, State> {
 
 	public render(): JSX.Element {
 		return (
-			<div>
-				<div style={{height: 200}}>
+			<div style={{textAlign: "center"}}>
+				<div>
 					<label>Ribbon text:
 						<input value={this.state.text} onChange={this.changeText}/>
 					</label>
+				</div>
+				<div>
 					<label>Ribbon width:
 						<input type="number" value={this.state.width} onChange={this.changeWidth}/>
 					</label>
+				</div>
+				<div>
 					<label>Ribbon angle:
 						<input type="number" value={this.state.angle} onChange={this.changeAngle}/>
 					</label>
-					<Ribbon width={+this.state.width} angle={+this.state.angle}>{this.state.text}</Ribbon>
 				</div>
-				<div>{this.renderExamples()}</div>
+				{this.renderRibbon()}
 			</div>
-
 		);
 	}
 
-	public renderExamples() {
+	public renderRibbon() {
 		const cStyle: React.CSSProperties = {
-			height: 200,
-			width: 200,
+			height: 300,
+			width: 300,
 			background: "#f5f5f5",
-			margin: 5,
+			margin: 15,
 			overflow: "hidden",
-			display: "inline-block"
+			display: "inline-block",
+			transform: "translate(0)"
 		};
-		return examples.map((example, i) => {
-			let props = mergeDeep(example, {style: {position: "relative"}});
-			return (
-				<div style={cStyle} key={"example-" + i}>
-					{React.createElement(Ribbon, props)}
-				</div>
-			);
-		});
+		const props = {
+			width: +this.state.width,
+			angle: +this.state.angle
+		};
+		return (
+			<div style={cStyle}>
+				{React.createElement(Ribbon, props, this.state.text)}
+			</div>
+		);
 	}
 
 	private changeText = (event: React.FormEvent<HTMLInputElement>) => {
