@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - "node"
+  - "7"
+
+before_script:
+  - npm -q install
+
+script:
+  - npm run -q compile
+  - npm run -q compile:examples
+  - npm run -q lint
